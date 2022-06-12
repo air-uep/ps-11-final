@@ -1,0 +1,40 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Human Resources Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Lista pracowników</h2>
+
+<div class="display-list" style="width:300px">
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Imię i nazwisko</th>			
+		</tr>
+		
+		<th:block th:each = "emp : ${employees}">
+			<tr>
+				<td th:text="${emp.id}">ID</td>
+				<td>
+					<a th:href="@{/employees/} + ${emp.id}" th:text="${emp.firstName + ' ' + emp.lastName}">FULL_NAME</a>				
+				</td>				
+			</tr>
+		</th:block>
+		
+	</table>
+</div>
+
+<div>
+	<p><a th:href="@{/employees/form}">Utwórz</a></p>
+	<p><a th:href="@{/}">Strona domowa</a></p>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Human Resources Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Pracownik</h2>
+
+<div class="display-one" th:object="${employee}">
+	<table>
+		<tr>
+			<td>Id</td> <td th:text="*{id}">ID</td>
+		</tr>
+		<tr>
+			<td>Imię</td> <td th:text="*{firstName}">FIRST_NAME</td>
+		</tr>		
+		<tr>
+			<td>Nazwisko</td> <td th:text="*{lastName}">LAST_NAME</td>
+		</tr>		
+		<tr>
+			<td>Data zatrudnienia</td> <td th:text="*{hireDate}">HIRE_DATE</td>
+		</tr>
+		<tr>
+			<td>Pensja</td> <td th:text="*{salary}">SALARY</td>
+		</tr>		
+		<tr>
+			<td>Dział</td> <td th:text="*{department.name}">DEPARTMENT</td>
+		</tr>		
+		<tr>
+			<td>Stanowisko</td> <td th:text="*{position.name}">POSITON</td>
+		</tr>		
+	</table>
+</div>
+
+<div>
+	<p><a th:href="@{/employees/form/} + ${employee.id}">Modyfikuj</a></p>
+	<p><a th:href="@{/employees/delete/} + ${employee.id}">Usuń</a></p>
+	<p><a th:href="@{/employees}">Powrót</a></p>
+</div>
+
+</body>
+
+</html>

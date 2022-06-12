@@ -1,0 +1,31 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Human Resources Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Stanowisko</h2>
+
+<div class="display-one" th:object="${position}">
+	<table>
+		<tr>
+			<td>Id</td> <td th:text="*{id}">ID</td>
+		</tr>
+		<tr>
+			<td>Nazwa</td> <td th:text="*{name}">NAME</td>
+		</tr>		
+	</table>
+</div>
+
+<div>
+	<p><a th:href="@{/positions}">Powrót</a></p>
+</div>
+
+</body>
+
+</html>

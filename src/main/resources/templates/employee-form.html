@@ -1,0 +1,88 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Human Resources Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Pracownik</h2>
+
+<div class="display-form" th:object="${employee}">
+<form th:action="@{/employees/save}" method="post">
+	<table>
+		<tr>
+			<td>Id</td> 
+			<td th:text="*{id}">ID</td>
+			<td>
+				<input type="hidden" th:field="*{id}" />
+			</td>
+		</tr>
+		<tr>
+			<td>Imię</td> 
+			<td>
+				<input type="text" th:field="*{firstName}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">ERROR</td>
+		</tr>		
+		<tr>
+			<td>Nazwisko</td> 
+			<td>
+				<input type="text" th:field="*{lastName}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">ERROR</td>
+		</tr>		
+		<tr>
+			<td>Data zatrudnienia</td> 
+			<td>
+				<input type="date" th:field="*{hireDate}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('hireDate')}" th:errors="*{hireDate}">ERROR</td>
+		</tr>
+		<tr>
+			<td>Pensja</td> 
+			<td>
+				<input type="number" th:field="*{salary}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">ERROR</td>
+		</tr>		
+		<tr>
+			<td>Dział</td> 
+			<td>
+				<select th:field = "*{department.id}">
+					<option th:each  = "dep : ${departments}"
+					        th:value = "${dep.id}"
+					        th:text  = "${dep.name}" />
+				</select>
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('department')}" th:errors="*{department}">ERROR</td>
+		</tr>		
+		<tr>
+			<td>Stanowisko</td> 
+			<td>
+				<select th:field = "*{position.id}">
+					<option th:each  = "pos : ${positions}"
+					        th:value = "${pos.id}"
+					        th:text  = "${pos.name}" />
+				</select>
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('position')}" th:errors="*{position}">ERROR</td>
+		</tr>
+				
+		<tr>
+			<td>
+				<input type="submit" value="Utwórz" />
+			</td>
+			<td><a th:href="@{/employees}">Anuluj</a></td>
+		</tr>
+
+	</table>
+</form>
+</div>
+
+</body>
+
+</html>

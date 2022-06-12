@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Human Resources Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Dział</h2>
+
+<div class="display-form" th:object="${department}">
+<form th:action="@{/departments/save}" method="post">
+	<table>
+		<tr>
+			<td>Id</td> 
+			<td th:text="*{id}">ID</td>
+			<td>
+				<input type="hidden" th:field="*{id}" />
+			</td>
+		</tr>
+		<tr>
+			<td>Nazwa</td> 
+			<td>
+				<input type="text" th:field="*{name}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</td>
+		</tr>		
+		<tr>
+			<td>Lokalizacja</td> 
+			<td>
+				<input type="text" th:field="*{location}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('location')}" th:errors="*{location}">ERROR</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" value="Utwórz" />
+			</td>
+			<td><a th:href="@{/departments}">Anuluj</a></td>
+		</tr>
+	</table>
+</form>
+</div>
+
+</body>
+
+</html>
